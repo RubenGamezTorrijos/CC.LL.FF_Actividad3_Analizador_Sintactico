@@ -113,8 +113,9 @@ El objetivo central de esta práctica es el diseño e implementación del motor 
 
 ## 👥 Créditos y Autoría
 *   **Desarrollador:** Rubén Gámez Torrijos
+*   **Actividad:** Actividad 3 - Implementación de un Analizador Sintáctico con Bison
 *   **Asignatura:** Compiladores y Lenguajes Formales (CC.LL.FF.)
-*   **Curso:** 2025/2026
+*   **Fecha:** 25 de Mayo de 2026
 *   **Grado:** Ingeniería Informática
 *   **Universidad:** Universidad Europea de Madrid (UEM)
 
