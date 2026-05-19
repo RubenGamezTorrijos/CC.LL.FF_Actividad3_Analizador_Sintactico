@@ -38,7 +38,8 @@ El repositorio está organizado directamente en el directorio raíz con la sigui
 │   └── README.md                 # Resultados y trazas esperadas de los casos de prueba
 ├── scripts/                      # Scripts de automatización y control de versiones
 │   ├── setup_deps.sh             # Inicializador de dependencias en Linux/macOS
-│   └── build_and_test.sh         # Compilación y batería de pruebas en Linux/WSL2
+│   ├── build_and_test.sh         # Compilación y batería de pruebas en Linux/WSL2
+│   └── build_and_test.bat        # Batería de pruebas automatizada nativa de Windows (CMD/PowerShell)
 ├── Makefile                      # Reglas de construcción de make multiplataforma
 ├── .gitignore                    # Archivo de exclusiones de Git para archivos temporales
 ├── Memoria_Actividad3.md         # Memoria técnica académica oficial
@@ -55,18 +56,29 @@ El repositorio está organizado directamente en el directorio raíz con la sigui
     chmod +x scripts/setup_deps.sh
     ./scripts/setup_deps.sh
     ```
+*   **Windows (Nativo):** Agrega las herramientas de desarrollo `gcc`, `flex`, `bison` y `make` (por ejemplo, a través de MSYS2 o MinGW) al PATH del sistema.
 *   **Windows / Entorno Híbrido:** Es altamente recomendable contar con el entorno WSL2 o Git Bash/MSYS2 instalado. En MSYS2, puedes configurar las dependencias ejecutando:
     ```bash
     pacman -S msys/flex msys/bison mingw-w64-x86_64-gcc make
     ```
 
 ### Implementación y Testeo Rápido
-Otorga permisos de ejecución a los scripts y ejecútalos desde la raíz en tu terminal Bash (Linux/WSL2):
-```bash
-chmod +x scripts/*.sh
-./scripts/build_and_test.sh
-```
-El script compilará de forma limpia, comprobará los códigos de salida y contenidos esperados para todas las pruebas e imprimirá un reporte detallado en pantalla.
+
+*   **En Linux / WSL2 / Git Bash (Terminal Bash):**
+    Otorga permisos de ejecución a los scripts y ejecútalos desde la raíz:
+    ```bash
+    chmod +x scripts/*.sh
+    ./scripts/build_and_test.sh
+    ```
+
+*   **En Windows (Símbolo del sistema CMD o PowerShell):**
+    Puedes ejecutar directamente el script de procesamiento nativo para Windows:
+    ```cmd
+    .\scripts\build_and_test.bat
+    ```
+    *(O simplemente haciendo doble clic en el archivo `build_and_test.bat` desde el explorador de archivos).*
+
+El script correspondiente compilará de forma limpia, comprobará los códigos de salida y contenidos esperados para todas las pruebas e imprimirá un reporte detallado en pantalla.
 
 ---
 
