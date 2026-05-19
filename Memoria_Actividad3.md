@@ -8,7 +8,7 @@
 ## 👨‍💻 Datos del Proyecto
 * **Actividad:** Actividad 3 - Implementación de un Analizador Sintáctico con Bison
 * **Entorno de Compilación y Prueba:** WSL2 (Ubuntu 24.04 LTS), GCC 13.2, Flex 2.6.4, Bison 3.8.2
-* **Autor:** Estudiante de la UEM
+* **Autor:** Rubén Gámez Torrijos
 * **Fecha:** Mayo de 2026
 
 ---
