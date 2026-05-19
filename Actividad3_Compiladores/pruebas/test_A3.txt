@@ -1,0 +1,6 @@
+i = 0;
+limit = 10;
+while (limit - i):
+    print(i);
+    i = i + 1;
+endwhile

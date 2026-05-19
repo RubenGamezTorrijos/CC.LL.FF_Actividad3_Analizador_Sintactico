@@ -1,0 +1,29 @@
+# ==============================================================================
+# GitIgnore - UEM Actividad 3 - Analizador Sintáctico
+# ==============================================================================
+
+# Compiladores y ejecutables generados
+minilang
+minilang.exe
+
+# Archivos generados automáticamente por Bison
+src/parser.tab.c
+src/parser.tab.h
+
+# Archivos generados automáticamente por Flex
+src/lex.yy.c
+
+# Archivos de objeto intermedios
+src/*.o
+*.o
+
+# Paquetes y entregables académicos comprimidos
+*.zip
+*.tar.gz
+
+# Archivos temporales de editor e IDE
+.vscode/
+.idea/
+*.swp
+*~
+.DS_Store
