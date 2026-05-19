@@ -129,6 +129,7 @@ run_test() {
 # --- EJECUCIÓN DE PRUEBAS ---
 
 # Pruebas Tipo A (Correctos)
+run_test "pruebas/test_UEM_oficial.txt" "A" "Analisis sintactico correcto" 0
 run_test "pruebas/test_A1.txt" "A" "Analisis sintactico correcto" 0
 run_test "pruebas/test_A2.txt" "A" "Analisis sintactico correcto" 0
 run_test "pruebas/test_A3.txt" "A" "Analisis sintactico correcto" 0
@@ -141,8 +142,8 @@ run_test "pruebas/test_B3.txt" "B" "Error sintactico en la linea" 1
 # 3. Reporte Final
 echo -e "\n${YELLOW}[3/3] Reporte Final de Calidad:${NC}"
 echo -e "============================================================"
-echo -e " Pruebas Superadas: ${GREEN}$TESTS_PASSED${NC} / $TOTAL_TESTS"
-echo -e " Pruebas Falladas : ${RED}$TESTS_FAILED${NC} / $TOTAL_TESTS"
+echo -e " Pruebas Superadas: ${GREEN}$TESTS_PASSED${NC} / 7"
+echo -e " Pruebas Falladas : ${RED}$TESTS_FAILED${NC} / 7"
 echo -e "============================================================"
 
 if [ $TESTS_FAILED -eq 0 ]; then

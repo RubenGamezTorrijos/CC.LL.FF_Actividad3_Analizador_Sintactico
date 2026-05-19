@@ -10,6 +10,26 @@ echo ======================================================================
 rem Volver a la raiz del proyecto
 cd /d "%~dp0.."
 
+rem Comprobar si existe 'make' de forma nativa
+make --version >nul 2>&1
+if %ERRORLEVEL% NEQ 0 (
+    echo.
+    echo [!] 'make' nativo no detectado en el PATH de Windows.
+    echo [+] Buscando entorno WSL Linux Subsystem...
+    wsl --help >nul 2>&1
+    if errorlevel 1 (
+        echo [ERROR] No se encontro 'make' ni 'wsl'. Por favor instala MSYS2 o habilita WSL.
+        pause
+        exit /b 1
+    ) else (
+        echo [+] Entorno WSL detectado. Delegando ejecucion a Linux de forma transparente...
+        echo.
+        wsl bash scripts/build_and_test.sh
+        pause
+        exit /b 0
+    )
+)
+
 echo.
 echo [1/3] Limpiando y Compilando el Analizador Lexico-Sintactico...
 call make clean >nul 2>nul
@@ -17,17 +37,15 @@ call make
 
 if exist minilang.exe (
     set EXECUTABLE=.\minilang.exe
-) else if exist minilang (
-    set EXECUTABLE=.\minilang
 ) else (
     echo.
-    echo [ERROR] La compilacion ha fallado o no se ha encontrado el ejecutable.
+    echo [ERROR] La compilacion nativa ha fallado o no se ha encontrado el ejecutable (minilang.exe).
     echo Asegurate de tener GCC, Flex, Bison y Make agregados al PATH de Windows.
     pause
     exit /b 1
 )
 
-echo [+] Usando ejecutable: %EXECUTABLE%
+echo [+] Usando ejecutable nativo: %EXECUTABLE%
 set TESTS_PASSED=0
 set TESTS_FAILED=0
 
@@ -36,6 +54,7 @@ echo [2/3] Ejecutando Bateria de Pruebas...
 echo ------------------------------------------------------------
 
 rem --- PRUEBAS TIPO A ---
+call :run_test pruebas\test_UEM_oficial.txt A "Analisis sintactico correcto"
 call :run_test pruebas\test_A1.txt A "Analisis sintactico correcto"
 call :run_test pruebas\test_A2.txt A "Analisis sintactico correcto"
 call :run_test pruebas\test_A3.txt A "Analisis sintactico correcto"

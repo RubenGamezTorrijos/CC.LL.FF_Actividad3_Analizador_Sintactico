@@ -18,6 +18,12 @@
 [a-zA-Z_][a-zA-Z0-9_]*  { return ID; }
 [0-9]+(\.[0-9]+)?       { return NUMBER; }
 
+"<="                { return LE; }
+">="                { return GE; }
+"=="                { return EQ; }
+"!="                { return NE; }
+"<"                 { return '<'; }
+">"                 { return '>'; }
 "="                 { return '='; }
 "+"                 { return '+'; }
 "-"                 { return '-'; }
@@ -28,7 +34,7 @@
 ":"                 { return ':'; }
 ";"                 { return ';'; }
 
-"#[^\n]*"           { /* Ignore Python-style comments */ }
+#[^\n]*             { /* Ignore Python-style comments */ }
 [ \t\r]+            { /* Ignore whitespace and carriage returns */ }
 \n                  { /* Ignore newline. yylineno increments automatically */ }
 

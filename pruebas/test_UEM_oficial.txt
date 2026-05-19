@@ -1,0 +1,13 @@
+# Programa de prueba exacto del enunciado de la UEM
+x = 3
+y = 5
+
+if x < y:
+    print(x)
+    x = x + 1
+endif
+
+while x < 10:
+    print(x)
+    x = x + 1
+endwhile

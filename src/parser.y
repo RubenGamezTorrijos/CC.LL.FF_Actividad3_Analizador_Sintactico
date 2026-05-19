@@ -8,7 +8,10 @@ void yyerror(const char *s);
 %}
 
 %token ID NUMBER PRINT IF WHILE ENDIF ENDWHILE
+%token LE GE EQ NE
 
+%left EQ NE
+%left '<' '>' LE GE
 %left '+' '-'
 %left '*' '/'
 
@@ -28,21 +31,29 @@ statement : assignment
           ;
 
 assignment : ID '=' expr ';'
+           | ID '=' expr
            ;
 
 print_stmt : PRINT '(' expr ')' ';'
+           | PRINT '(' expr ')'
            ;
 
-if_stmt : IF '(' expr ')' ':' statements ENDIF
+if_stmt : IF expr ':' statements ENDIF
         ;
 
-while_stmt : WHILE '(' expr ')' ':' statements ENDWHILE
+while_stmt : WHILE expr ':' statements ENDWHILE
            ;
 
 expr : expr '+' expr
      | expr '-' expr
      | expr '*' expr
      | expr '/' expr
+     | expr '<' expr
+     | expr '>' expr
+     | expr LE expr
+     | expr GE expr
+     | expr EQ expr
+     | expr NE expr
      | '(' expr ')'
      | ID
      | NUMBER
